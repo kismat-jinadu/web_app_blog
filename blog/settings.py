@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'lr(!ey*e6x2p17v!5vvw50+$i5$6%)%%q!4k82)zv8^1s6+!8v'
+SECRET_KEY = '&zj^#9)p9+8z5r0&#v&p5-x@e9nwo%#!e0vcg-&52grqfaiy=@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,14 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #My apps
-    'blogs',
-    'users',
-
-    #third party apps
-    'bootstrap4',
-
-    #default django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,7 +54,7 @@ ROOT_URLCONF = 'blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,15 +118,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-#My settings
-LOGIN_URL ='users:login'
-
-#Heroku settings.
-import django_heroku
-django_heroku.settings(locals())
-
-if os.environ.get('DEBUG')=='TRUE':
-    DEBUG=True
-elif os.environ.get('DEBUG')=='FALSE':
-    DEBUG = False
