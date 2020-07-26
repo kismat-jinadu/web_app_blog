@@ -10,7 +10,7 @@ def index(request):
     """The home page for Blog"""
     return render(request,'blogs/index.html')
 
-@login_required
+
 def blog_posts(request):
     """Show all blog posts."""
     blogposts1 = BlogPost.objects.filter(owner=request.user)
