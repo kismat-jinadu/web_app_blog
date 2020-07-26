@@ -17,7 +17,7 @@ def blog_posts(request):
         blogposts2 = BlogPost.objects.filter(public=True)
         blog_posts = blogposts1.union(blogposts2).order_by('date_added')
     else: 
-         blog_posts = BlogPost.objects.filter(public=True)
+        blog_posts = BlogPost.objects.filter(public=True)
     context = {'blog_posts':blog_posts}
     return render(request, 'blogs/blog_posts.html',context)
 
