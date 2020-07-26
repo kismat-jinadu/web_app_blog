@@ -1,0 +1,3 @@
+#!/Users/kismat/Documents/python-crash-course/part-ii/try-it-yourself/web_app/blog/bl_env/bin/python3 -u
+from xonsh.main import main
+main()
