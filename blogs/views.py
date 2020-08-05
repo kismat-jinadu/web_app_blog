@@ -4,6 +4,7 @@ from django.http import Http404
 
 from .models import BlogPost
 from .forms import BlogPostForm
+from .forms import DeleteForm
 # Create your views here.
 
 def index(request):
@@ -86,4 +87,16 @@ def edit_blog_post(request,blog_post_id):
     context = {'blog_post':blog_post,'form':form}
     return render(request, 'blogs/edit_blog_post.html',context)
 
-    
+@login_required
+def delete_blog_post(request,blog_post_id):
+    """Delete an existing blog post"""
+    blog_post = get_object_or_404(BlogPost,id = blog_post_id)
+    if request.method =='POST':
+        check_blog_post_owner(request,blog_post_id)
+        form=DeleteForm(request.POST)
+        if form.is_valid():
+            #confirm delete
+            blog_post.delete()
+            return redirect('blogs:blog_posts')
+    context = {'blog_post':blog_post}
+    return render(request, 'blogs/delete_blog_post.html',context)

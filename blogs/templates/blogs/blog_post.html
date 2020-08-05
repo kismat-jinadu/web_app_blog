@@ -15,5 +15,6 @@
   <div class="card-body">
     {{blog_content|linebreaks}}
   </div>
+  <div class="card-footer" style= "text-align:right"><small><a href="{% url 'blogs:delete_blog_post' blog_post.id %}" style= "color:red">Delete blog post</a></small></div>
 </div>
 {% endblock content %}
