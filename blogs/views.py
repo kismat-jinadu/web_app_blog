@@ -82,7 +82,13 @@ def edit_blog_post(request,blog_post_id):
         #POST data submitted; process data.
         form = BlogPostForm(instance=blog_post, data=request.POST)
         if form.is_valid():
-            form.save()
+            edit_blog_post=form.save(commit=False)
+            edit_switch1 = request.POST.get('edit_tog')
+            if edit_switch1 =="on":
+                edit_blog_post.public = True
+            else:
+                edit_blog_post.public = False
+            edit_blog_post.save()
             return redirect('blogs:blog_post',blog_post_id= blog_post.id)
     context = {'blog_post':blog_post,'form':form}
     return render(request, 'blogs/edit_blog_post.html',context)

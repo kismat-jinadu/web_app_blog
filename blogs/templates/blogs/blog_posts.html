@@ -9,7 +9,12 @@
 <ul>
   {% for blog_post in blog_posts %}
   <li><h3>
-    <a href="{% url 'blogs:blog_post' blog_post.id %}">{{blog_post}}</a>
+    <a href="{% url 'blogs:blog_post' blog_post.id %}">{{blog_post}}</a> 
+    {% if blog_post.public %}
+      (public)
+    {% else %}
+      (private)
+    {% endif %}
   </h3></li>
   {% empty %}
   <li><h3>No blog posts have been added yet</h3></li>
